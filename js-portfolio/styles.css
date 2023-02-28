@@ -21,6 +21,10 @@
   width: 100%;
   margin-bottom: 30px;
   flex-direction: column;
+  background-image: url("https://media.bio.site/sites/D34135AA-2692-497A-A166-1F8E7F1819DF/MFThZwRSoqDTSdYX7QZVpg.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 .name-wrapper {
