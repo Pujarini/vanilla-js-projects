@@ -1,0 +1,45 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.bg {
+  background-color: #1c1b29;
+}
+
+.main {
+  color: #fff;
+}
+
+.profile-wrapper {
+  display: flex;
+  width: 100%;
+  margin-bottom: 28px;
+  flex-direction: column;
+}
+
+.name-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin: 20px auto 0;
+  text-transform: uppercase;
+  overflow: hidden;
+  text-align: center;
+}
+
+.name-wrapper .name {
+  font-size: 60px;
+  font-weight: 400;
+  line-height: 60px;
+  letter-spacing: -3px;
+  min-height: 120px;
+  max-width: 400px;
+  margin-top: 15px;
+}
+
+.name-wrapper .bio {
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  line-height: 17px;
+  margin-top: 20px;
+}
