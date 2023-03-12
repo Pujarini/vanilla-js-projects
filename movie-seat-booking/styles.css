@@ -1,0 +1,102 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  background-color: #00008b;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.movie__container {
+  margin: 20px 0;
+}
+
+.movie__container select {
+  background-color: #fff;
+  border: 0;
+  border-radius: 5px;
+  padding: 5px 10px 5px 10px;
+  margin-left: 10px;
+  font-size: 15px;
+}
+
+.booking__legends {
+  color: gray;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* background-color: #b2b2cb; */
+  width: auto;
+  height: 30px;
+  list-style-type: none;
+  padding: 5px 10px;
+}
+.booking__legends li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 10px;
+}
+
+.booking__legends li small {
+  margin-left: 5px;
+}
+
+.seat {
+  height: 15px;
+  width: 15px;
+  background-color: gray;
+  margin: 2px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.seat.booked {
+  background-color: #fff;
+}
+
+.seat.selected {
+  background-color: green;
+}
+
+.seat:nth-of-type(2) {
+  margin-right: 25px;
+}
+
+.seat:nth-last-of-type(2) {
+  margin-left: 25px;
+}
+
+.row {
+  display: flex;
+}
+
+.screen {
+  height: 70px;
+  width: 100%;
+  background-color: #fff;
+  margin: 20px 0;
+  box-shadow: 0px 3px 10px rgba(255, 255, 255, 0.7);
+  transform: rotateX(-45deg);
+}
+
+.movie_seatContainer {
+  perspective: 500px;
+}
+
+.summary__text {
+  margin: 30px 0;
+}
+
+.summary__text span {
+  color: aqua;
+}
