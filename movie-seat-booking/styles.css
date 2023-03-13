@@ -76,6 +76,16 @@ body {
   margin-left: 25px;
 }
 
+.seat:not(.booked):hover {
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+.booking__legends .seat:not(.booked):hover {
+  cursor: default;
+  transform: scale(1);
+}
+
 .row {
   display: flex;
 }
