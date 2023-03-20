@@ -2,11 +2,13 @@ import fetchProducts from "./components/fetchProducts";
 import "./styles/main.css";
 const productContainer = document.querySelector(".products__container");
 
+const cartItems = [];
+
 function createProduct(product) {
   const div = document.createElement("div");
   div.className = "product-card";
   let img = document.createElement("img");
-  img.src = product.images[0];
+  img.src = product.thumbnail;
   img.setAttribute("lazy", "true");
   img.setAttribute("height", 200);
   img.setAttribute("width", 200);
@@ -27,6 +29,19 @@ function createProduct(product) {
   return div;
 }
 
+function addToCart(products) {
+  const cartBtnList = document.querySelectorAll(".cartBtn");
+  cartBtnList.forEach((btn, index) => {
+    btn.addEventListener("click", () => {
+      const item = products.find((product) => product.id === index + 1);
+      console.log(item);
+      cartItems.push(item);
+    });
+  });
+  console.log(cartItems);
+}
+console.log(cartItems);
+
 async function fetchData() {
   const productData = [];
   const response = await fetchProducts();
@@ -36,11 +51,19 @@ async function fetchData() {
   let products = productData
     ? productData.map(createProduct)
     : createProduct("no data");
-  console.log(products);
+
   for (let i = 0; i < products.length; i++) {
     let product = products[i];
     productContainer.appendChild(product);
   }
+  addToCart(response);
 }
+//   const cartBtnList = document.querySelectorAll(".cartBtn");
+//   cartBtnList.forEach((btn, index) => {
+//     btn.addEventListener("click", (e) =>
+//       console.log("clicked", response[index])
+//     );
+//   });
+// }
 
 fetchData();
