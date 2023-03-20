@@ -7,6 +7,11 @@ function createProduct(product) {
   div.className = "product-card";
   let img = document.createElement("img");
   img.src = product.images[0];
+  img.setAttribute("lazy", "true");
+  img.setAttribute("height", 200);
+  img.setAttribute("width", 200);
+  const divContainer = document.createElement("div");
+  divContainer.className = "product-info-container";
   let title = document.createElement("h3");
   title.innerHTML = product.title;
   let span = document.createElement("span");
@@ -15,9 +20,10 @@ function createProduct(product) {
   cartBtn.innerHTML = "Add to cart";
   cartBtn.className = "cartBtn";
   div.appendChild(img);
-  div.appendChild(title);
-  div.appendChild(span);
-  div.appendChild(cartBtn);
+  divContainer.appendChild(title);
+  divContainer.appendChild(span);
+  divContainer.appendChild(cartBtn);
+  div.appendChild(divContainer);
   return div;
 }
 
