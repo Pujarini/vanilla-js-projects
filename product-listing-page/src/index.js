@@ -1,46 +1,9 @@
-import fetchProducts from "./components/fetchProducts";
+import fetchProducts from "./utils/fetchProducts";
 import "./styles/main.css";
+import addToCart from "./utils/addItemsToCart";
+import createProduct from "./utils/createProductCard";
 const productContainer = document.querySelector(".products__container");
-
-const cartItems = [];
-
-function createProduct(product) {
-  const div = document.createElement("div");
-  div.className = "product-card";
-  let img = document.createElement("img");
-  img.src = product.thumbnail;
-  img.setAttribute("lazy", "true");
-  img.setAttribute("height", 200);
-  img.setAttribute("width", 200);
-  const divContainer = document.createElement("div");
-  divContainer.className = "product-info-container";
-  let title = document.createElement("h3");
-  title.innerHTML = product.title;
-  let span = document.createElement("span");
-  span.innerHTML = "$" + product.price;
-  let cartBtn = document.createElement("button");
-  cartBtn.innerHTML = "Add to cart";
-  cartBtn.className = "cartBtn";
-  div.appendChild(img);
-  divContainer.appendChild(title);
-  divContainer.appendChild(span);
-  divContainer.appendChild(cartBtn);
-  div.appendChild(divContainer);
-  return div;
-}
-
-function addToCart(products) {
-  const cartBtnList = document.querySelectorAll(".cartBtn");
-  cartBtnList.forEach((btn, index) => {
-    btn.addEventListener("click", () => {
-      const item = products.find((product) => product.id === index + 1);
-      console.log(item);
-      cartItems.push(item);
-    });
-  });
-  console.log(cartItems);
-}
-console.log(cartItems);
+const cartContainer = document.querySelector("#cart__container");
 
 async function fetchData() {
   const productData = [];
@@ -58,12 +21,5 @@ async function fetchData() {
   }
   addToCart(response);
 }
-//   const cartBtnList = document.querySelectorAll(".cartBtn");
-//   cartBtnList.forEach((btn, index) => {
-//     btn.addEventListener("click", (e) =>
-//       console.log("clicked", response[index])
-//     );
-//   });
-// }
 
 fetchData();

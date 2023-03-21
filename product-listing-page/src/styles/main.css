@@ -25,7 +25,18 @@ nav ul {
 nav ul li {
   list-style: none;
 }
+
+.product__page {
+  display: flex;
+  justify-content: space-between;
+  height: 100vh;
+}
+.filters__container {
+  background-color: aqua;
+  flex: 1;
+}
 .products__container {
+  flex: 1 500px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -33,7 +44,14 @@ nav ul li {
   gap: 20px;
   padding: 30px;
   margin: 10px auto;
+  background-color: bisque;
+}
+
+#cart__container {
   border: 1px solid;
+  display: none;
+  background-color: orange;
+  flex: 1;
 }
 
 .product-card {
