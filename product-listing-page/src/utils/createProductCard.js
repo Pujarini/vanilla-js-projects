@@ -1,26 +1,28 @@
 function createProduct(product) {
-  const div = document.createElement("div");
-  div.className = "product-card";
+  // console.log(cart);
+  const { thumbnail, title, price } = product;
+  const productCard = document.createElement("div");
+  productCard.className = "product-card";
   let img = document.createElement("img");
-  img.src = product.thumbnail;
+  img.src = thumbnail;
   img.setAttribute("lazy", "true");
   img.setAttribute("height", 200);
   img.setAttribute("width", 200);
-  const divContainer = document.createElement("div");
-  divContainer.className = "product-info-container";
-  let title = document.createElement("h3");
-  title.innerHTML = product.title;
+  const productInfoContainer = document.createElement("div");
+  productInfoContainer.className = "product-info-container";
+  let productName = document.createElement("h3");
+  productName.innerHTML = title;
   let span = document.createElement("span");
-  span.innerHTML = "$" + product.price;
+  span.innerHTML = "$" + price;
   let cartBtn = document.createElement("button");
   cartBtn.innerHTML = "Add to cart";
   cartBtn.className = "cartBtn";
-  div.appendChild(img);
-  divContainer.appendChild(title);
-  divContainer.appendChild(span);
-  divContainer.appendChild(cartBtn);
-  div.appendChild(divContainer);
-  return div;
+  productInfoContainer.appendChild(cartBtn);
+  productCard.appendChild(img);
+  productInfoContainer.appendChild(productName);
+  productInfoContainer.appendChild(span);
+  productCard.appendChild(productInfoContainer);
+  return productCard;
 }
 
 export default createProduct;
