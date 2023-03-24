@@ -1,5 +1,4 @@
 function createProduct(product) {
-  // console.log(cart);
   const { thumbnail, title, price } = product;
   const productCard = document.createElement("div");
   productCard.className = "product-card";
@@ -17,11 +16,11 @@ function createProduct(product) {
   let cartBtn = document.createElement("button");
   cartBtn.innerHTML = "Add to cart";
   cartBtn.className = "cartBtn";
-  productInfoContainer.appendChild(cartBtn);
   productCard.appendChild(img);
   productInfoContainer.appendChild(productName);
   productInfoContainer.appendChild(span);
   productCard.appendChild(productInfoContainer);
+  productInfoContainer.appendChild(cartBtn);
   return productCard;
 }
 
