@@ -1,0 +1,92 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", "sans-serif";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.container {
+  text-align: center;
+}
+.progress-container {
+  display: flex;
+  justify-content: space-between;
+  max-width: 100%;
+  width: 350px;
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.progress-container::before {
+  content: "";
+  background-color: lightgray;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  z-index: -1;
+  transform: translateY(-50%);
+  transition: 0.5s ease;
+}
+
+.progress-steps {
+  background-color: #3498db;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 0%;
+  height: 3px;
+  z-index: -1;
+  transform: translateY(-50%);
+  transition: 0.5s ease;
+}
+
+.circle {
+  background-color: #fff;
+  color: #999;
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid;
+}
+
+.circle.active {
+  border: 2px solid #3498db;
+}
+
+.btn {
+  border: none;
+  background-color: #3498db;
+  padding: 8px 30px;
+  border-radius: 5px;
+  margin: 10px;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.5s ease;
+  font-size: 15px;
+}
+
+.btn:hover {
+  transform: scale(1.1);
+}
+
+.btn:active {
+  outline: none;
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+  background-color: #999;
+}
