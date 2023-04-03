@@ -18,8 +18,83 @@ body {
 .todosContainer {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 10px;
+}
+
+.header input {
+  width: 100%;
+  height: 50px;
+  text-align: center;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+}
+
+.todo-list {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  justify-content: space-between;
+  /* align-items: center; */
+}
+
+.todoItem {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  cursor: pointer;
+}
+
+.todoItem:hover {
+  background-color: lightcyan;
 }
 
 .todoItem__completed {
   text-decoration: line-through;
+  opacity: 0.5;
+}
+
+.todoItem__completed:hover {
+  background-color: none;
+}
+
+.main {
+  border: 1px solid lightgray;
+  width: 100%;
+  padding: 5px;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid lightgray;
+  padding: 5px;
+  margin: 5px;
+  width: 100%;
+}
+
+.footer ul {
+  display: flex;
+  justify-content: space-around;
+  gap: 10px;
+}
+.footer ul li {
+  list-style: none;
+  border: 1px solid lightgray;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.footer ul li:hover {
+  transform: scale(1.1);
 }

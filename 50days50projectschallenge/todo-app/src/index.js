@@ -59,13 +59,14 @@ function createFooter() {
   itemCount.className = "todo-count";
 
   const filters = document.createElement("ul");
-  filters.addEventListener("click", applyFilters);
+
   filterTodos.map((filter) => {
     const filterItem = document.createElement("li");
     filterItem.className = filter;
     filterItem.innerText = filter;
     filters.appendChild(filterItem);
   });
+  filters.addEventListener("click", applyFilters);
 
   footer.appendChild(itemCount);
   footer.appendChild(filters);
