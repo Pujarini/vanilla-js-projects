@@ -6,17 +6,48 @@ let todoItemsCount = 0;
 
 const filterTodos = ["All", "Completed", "Active"];
 
-function completeTodos(e) {
+function completeAndDeleteTodos(e) {
   const todoItem = e.target;
-
   // complete a todo
-  todoItem.classList.toggle("todoItem__completed");
-  // delete a todo
-  if (todoItem.classList.contains("todoItem__delete")) {
-    const todo = todoItem.parentElement;
-
-    todo.remove();
+  if (todoItem.classList.contains("todo-toggle")) {
+    const completeItem = todoItem.checked;
+    if (completeItem) {
+      todoItem.parentNode.classList.add("todoItem__completed");
+    } else {
+      todoItem.parentNode.classList.remove("todoItem__completed");
+    }
   }
+  //delete
+  if (todoItem.classList.contains("todoItem__delete")) {
+    let parentNode = todoItem.parentNode.parentNode;
+    parentNode.remove();
+  }
+}
+
+function editTodos(e) {
+  console.log(e.target);
+  const parent = e.target.parentNode.parentNode;
+  const value = e.target.innerText;
+  const targetParent = e.target.parentNode;
+  parent.classList.add("editTodo");
+  const viewContent = parent.querySelector(".todo-view");
+  viewContent.style.display = "none";
+  const editTodo = document.createElement("input");
+  editTodo.className = "edit_mode";
+  editTodo.value = value;
+  editTodo.addEventListener("keyup", function (e) {
+    e.preventDefault();
+    const editedValue = e.target.value;
+    if (e.key === "Enter") {
+      const input = parent.querySelector(".edit_mode");
+      input.remove();
+      const removeLabel = targetParent.querySelector(".todo-value");
+      removeLabel.innerText = editedValue;
+      targetParent.style.display = "flex";
+      parent.classList.remove("editTodo");
+    }
+  });
+  parent.appendChild(editTodo);
 }
 
 function createTodoListContainer() {
@@ -28,23 +59,32 @@ function createTodoListContainer() {
   todoList.appendChild(todoItems);
   todoContainer.appendChild(todoList);
 
-  todoList.addEventListener("click", completeTodos);
+  todoItems.addEventListener("click", completeAndDeleteTodos);
+  todoList.addEventListener("dblclick", editTodos);
 }
 
 function applyFilters(e) {
   const todoList = document.querySelector(".todo-list").childNodes;
   todoList.forEach((todo) => {
     if (e.target.className === "All") {
-      todo.style.display = "flex";
+      todo.style.removeProperty("display");
     } else if (e.target.className === "Completed") {
-      if (todo.classList.contains("todoItem__completed")) {
-        todo.style.display = "flex";
+      if (
+        todo
+          .querySelector(".todo-view")
+          .classList.contains("todoItem__completed")
+      ) {
+        todo.querySelector(".todo-view").style.display = "flex";
       } else {
         todo.style.display = "none";
       }
     } else if (e.target.className === "Active") {
-      if (!todo.classList.contains("todoItem__completed")) {
-        todo.style.display = "flex";
+      if (
+        !todo
+          .querySelector(".todo-view")
+          .classList.contains("todoItem__completed")
+      ) {
+        todo.style.removeProperty("display");
       } else {
         todo.style.display = "none";
       }
@@ -76,12 +116,23 @@ function createFooter() {
 function createTodoItem(value) {
   const todoItem = document.createElement("li");
   todoItem.className = "todoItem";
+  const todoContent = document.createElement("div");
+  todoContent.className = "todo-view";
+  const todoComplete = document.createElement("input");
+  todoComplete.className = "todo-toggle";
+  todoComplete.type = "checkbox";
+
+  const todoValue = document.createElement("label");
+  todoValue.className = "todo-value";
+  todoValue.innerText = value;
   const delButton = document.createElement("button");
-  todoItem.innerHTML = value;
   delButton.innerText = "X";
   delButton.classList.add("todoItem__delete");
+  todoContent.appendChild(todoComplete);
+  todoContent.appendChild(todoValue);
+  todoContent.appendChild(delButton);
+  todoItem.appendChild(todoContent);
 
-  todoItem.appendChild(delButton);
   return todoItem;
 }
 

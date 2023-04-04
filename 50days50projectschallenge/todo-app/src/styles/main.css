@@ -48,23 +48,53 @@ body {
 }
 
 .todoItem {
+  list-style: none;
+}
+
+.todoItem .todo-view {
   display: flex;
   justify-content: space-between;
-  list-style: none;
+}
+
+.todoItem .todo-view .todo-value {
+  width: 100%;
+  text-align: center;
+  margin: 5px;
+}
+
+.todoItem .todo-view .todo-value:hover {
+  background-color: lightcyan;
+  width: 100%;
+}
+.todoItem .todo-view .todo-toggle {
   cursor: pointer;
 }
 
-.todoItem:hover {
-  background-color: lightcyan;
+.todoItem .todo-view .todoItem__delete {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: none;
+  color: red;
 }
 
-.todoItem__completed {
+.todoItem .todo-view .todoItem__delete:hover {
+  transform: scale(1.5);
+}
+
+.todoItem__completed .todo-value {
   text-decoration: line-through;
   opacity: 0.5;
 }
 
 .todoItem__completed:hover {
   background-color: none;
+}
+
+.edit_mode {
+  display: block;
+  padding: 5px;
+  width: 500px;
 }
 
 .main {
